@@ -17,7 +17,9 @@ class TOEView: UIView {
     
     var l: CGFloat!
     var r: CGFloat!
+    let black = UIColor(white: 0.21, alpha: 1)
     var type = EmblemType.Olympic
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +32,7 @@ class TOEView: UIView {
 
         self.fillBackground()
         
-        self.drawYellowArc()
+        self.drawGoldArc()
         self.drawBlackRect()
         self.drawRedOval()
         self.drawGreyArc()
@@ -46,12 +48,12 @@ class TOEView: UIView {
         case .Olympic:
             UIColor.whiteColor().setFill()
         case .Paralympic:
-            UIColor.blackColor().setFill()
+            black.setFill()
         }
         CGContextFillRect(UIGraphicsGetCurrentContext(), self.bounds)
     }
     
-    private func drawYellowArc() {
+    private func drawGoldArc() {
         let path = UIBezierPath(
             arcCenter: CGPointMake(l * 1.5, l * 1.5),
             radius: r,
@@ -60,7 +62,7 @@ class TOEView: UIView {
             clockwise: false)
         path.addLineToPoint(CGPointZero)
         
-        UIColor(red: 1.0, green: 0.84, blue: 0.0, alpha: 1.0).setFill()
+        UIColor(red: 0.7, green: 0.57, blue: 0.27, alpha: 1).setFill()
         path.fill()
     }
 
@@ -71,7 +73,7 @@ class TOEView: UIView {
         
         switch type {
         case .Olympic:
-            UIColor.blackColor().setFill()
+            black.setFill()
         case .Paralympic:
             UIColor.whiteColor().setFill()
         }
@@ -83,7 +85,7 @@ class TOEView: UIView {
         let rect = CGRectMake(l * 2, 0, l, l)
         let path = UIBezierPath(ovalInRect: rect)
         
-        UIColor.redColor().setFill()
+        UIColor(red: 0.9, green: 0, blue: 0.08, alpha: 1).setFill()
         path.fill()
     }
     
@@ -97,7 +99,7 @@ class TOEView: UIView {
             clockwise: true)
         path.addLineToPoint(CGPointMake(l * 3, l * 3))
         
-        UIColor(white: 0.5, alpha: 1.0).setFill()
+        UIColor(white: 0.7, alpha: 1.0).setFill()
         path.fill()
     }
 }
