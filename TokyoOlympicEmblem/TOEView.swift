@@ -10,27 +10,25 @@ import UIKit
 
 class TOEView: UIView {
 
-    enum DrawEmblem: Int {
-        case Olympic
+    enum EmblemType: Int {
+        case Olympic = 0
         case Paralympic
     }
     
     var l: CGFloat!
     var r: CGFloat!
-    var drawEmblem = DrawEmblem.Paralympic
+    var type = EmblemType.Olympic
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
         l = frame.size.width / 3
         r = sqrt(1.5 * 1.5 + 0.5 * 0.5) * l
-        
-        if drawEmblem == DrawEmblem.Paralympic {
-            backgroundColor = UIColor.blackColor()
-        }
     }
     
     override func drawRect(rect: CGRect) {
+
+        self.fillBackground()
         
         self.drawYellowArc()
         self.drawBlackRect()
@@ -41,6 +39,17 @@ class TOEView: UIView {
     
     // =========================================================================
     // MARK: - Private
+    
+    private func fillBackground() {
+        
+        switch type {
+        case .Olympic:
+            UIColor.whiteColor().setFill()
+        case .Paralympic:
+            UIColor.blackColor().setFill()
+        }
+        CGContextFillRect(UIGraphicsGetCurrentContext(), self.bounds)
+    }
     
     private func drawYellowArc() {
         let path = UIBezierPath(
@@ -60,7 +69,7 @@ class TOEView: UIView {
         let rect = CGRectMake(l, 0, l, l * 3)
         let path = UIBezierPath(rect: rect)
         
-        switch drawEmblem {
+        switch type {
         case .Olympic:
             UIColor.blackColor().setFill()
         case .Paralympic:

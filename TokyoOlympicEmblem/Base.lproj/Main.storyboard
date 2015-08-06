@@ -24,12 +24,24 @@
                                     <constraint firstAttribute="width" secondItem="Asv-g2-Xd9" secondAttribute="height" multiplier="1:1" id="Ba1-t3-auJ"/>
                                 </constraints>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z25-TF-3kD">
+                                <rect key="frame" x="79" y="444" width="163" height="29"/>
+                                <segments>
+                                    <segment title="Olympic"/>
+                                    <segment title="Paralympic"/>
+                                </segments>
+                                <connections>
+                                    <action selector="modeChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="BKb-Ao-lmb"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Asv-g2-Xd9" secondAttribute="trailing" constant="8" id="02C-GN-6V9"/>
+                            <constraint firstAttribute="centerX" secondItem="Z25-TF-3kD" secondAttribute="centerX" id="CFz-6j-j99"/>
                             <constraint firstItem="Asv-g2-Xd9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="8" id="FzU-k7-IOl"/>
                             <constraint firstAttribute="centerY" secondItem="Asv-g2-Xd9" secondAttribute="centerY" id="V18-wT-bQP"/>
+                            <constraint firstItem="Z25-TF-3kD" firstAttribute="top" secondItem="Asv-g2-Xd9" secondAttribute="bottom" constant="8" id="fQr-X4-ygK"/>
                             <constraint firstItem="Asv-g2-Xd9" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="qRv-fl-EeP"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Asv-g2-Xd9" secondAttribute="bottom" id="rP5-sh-ysi"/>
                         </constraints>
@@ -41,6 +53,9 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="toeView" destination="Asv-g2-Xd9" id="ZDO-Za-P1G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

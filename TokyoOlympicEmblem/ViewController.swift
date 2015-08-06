@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var toeView: TOEView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,5 +25,14 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func modeChanged(sender: UISegmentedControl) {
+        
+        let type = TOEView.EmblemType(rawValue: sender.selectedSegmentIndex)
+
+        if type != nil {
+            toeView.type = type!
+            toeView.setNeedsDisplay()
+        }
+    }
 }
 
